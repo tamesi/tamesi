@@ -1,0 +1,32 @@
+<div class="container">
+<div class="row">
+<div class="col-xs-4">
+
+
+<%= render 'list', user: @user, book: @books %>
+
+</div>
+
+<div class="col-xs-8">
+<h2>Book detail</h2>
+<table class="table table-striped">
+	<tr>
+		<th><%= attachment_image_tag @book.user, :image, :fill, 50, 50, format: 'jpg', fallback: "img/no-image.jpg" , :size => "60x60" %></th>
+		<!-- @book.user聞く -->
+
+		<th><%= link_to @book.user.name, user_path(@book.user.id), class: "user_#{@book.user.id}" %></th>
+
+		<th><%= @book.title %></th>
+
+		<th><%= @book.opinion %></th>
+
+		<th><% if @book.user == current_user %>
+		<%= link_to "edit", edit_book_path(@book.id), class: "edit_book_#{@book.id}" %>
+
+		<%= link_to "Destroy", book_path(@book.id), method: :delete, class: "destroy_book_#{@book.id}" %>
+		<% end %></th>
+	</tr>
+</div>
+</table>
+</div>
+</div>

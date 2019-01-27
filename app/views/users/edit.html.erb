@@ -1,0 +1,21 @@
+<div class="container">
+<h2>User info</h2>
+
+<%= form_for(@user) do |f| %>
+
+<% if @user.errors.any? %>
+<%= @user.errors.count %>件のエラーが発生しました
+<% @user.errors.full_messages.each do |message| %>
+	<%= message %>
+<% end %>
+<% end %>
+
+<p>name</p>
+<%= f.text_field :name, class: "name" %>
+<p>image</p>
+<%= f.attachment_field :image, class: "user_image" %>
+<p>Introduction</p>
+<%= f.text_area :introduction, class: "introduction" %>
+<%= f.submit 'Update User' %>
+<% end %>
+</div>
